@@ -1,0 +1,5 @@
+*       text=auto
+*.[ch]  text eol=lf
+*.[ch]  whitespace=tab-in-indent,space-before-tab,trailing-space
+*.sh    text eol=lf
+*.sh    whitespace=tab-in-indent,space-before-tab,trailing-space

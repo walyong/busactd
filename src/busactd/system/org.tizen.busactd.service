@@ -1,0 +1,5 @@
+[D-BUS Service]
+Name=org.tizen.busactd
+Exec=/bin/false
+SystemdService=busactd.service
+User=root

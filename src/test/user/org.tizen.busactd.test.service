@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.tizen.busactd.test
+Exec=/bin/false
+SystemdService=test-busactd.service

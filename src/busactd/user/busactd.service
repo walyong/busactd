@@ -1,0 +1,13 @@
+[Unit]
+Description=On Bus activator for user
+Requires=dbus.socket
+After=dbus.socket
+
+[Service]
+Type=dbus
+BusName=org.tizen.busactd
+ExecStart=/usr/lib/busactd/busactd --user
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
