@@ -21,25 +21,19 @@
 #pragma once
 
 #include <sys/syslog.h>
-
-#define log_full(level, ...)                                            \
-        do {                                                            \
-                log_write((level), __FILE__, __LINE__, __func__, __VA_ARGS__); \
-        } while (0)
+#include <systemd/sd-journal.h>
 
 #define log_dbg(format, ...)                                    \
-        do {                                                    \
-                log_full(LOG_DEBUG, format, ##__VA_ARGS__);     \
-        } while(0)
+do {                                                            \
+        sd_journal_print(LOG_DEBUG, format, ##__VA_ARGS__);     \
+} while(0)
 
 #define log_err(format, ...)                                    \
-        do {                                                    \
-                log_full(LOG_ERR, format, ##__VA_ARGS__);       \
-        } while (0)
+do {                                                            \
+        sd_journal_print(LOG_ERR, format, ##__VA_ARGS__);       \
+} while(0)
 
 #define log_info(format, ...)                                   \
-        do {                                                    \
-                log_full(LOG_INFO, format, ##__VA_ARGS__);      \
-        } while (0)
-
-int log_write(int level, const char*file, int line, const char *func, const char *format, ...);
+do {                                                            \
+        sd_journal_print(LOG_INFO, format, ##__VA_ARGS__);      \
+} while(0)

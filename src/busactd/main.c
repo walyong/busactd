@@ -188,7 +188,7 @@ static int busactd_parse_config_file(const char *path, void *userdata) {
         assert(path);
 
         if (!endswith(path, BUSACT_CONF_EXT)) {
-                log_dbg("file '%s' has no '%s' extension.", BUSACT_CONF_EXT);
+                log_dbg("file '%s' has no '%s' extension.", path, BUSACT_CONF_EXT);
                 return -EINVAL;
         }
 

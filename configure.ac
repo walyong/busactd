@@ -59,6 +59,7 @@ AC_SUBST(M4_DEFINES)
 # ------------------------------------------------------------------------------
 PKG_CHECK_MODULES(GLIB, [glib-2.0])
 PKG_CHECK_MODULES(GIO, [gio-2.0])
+PKG_CHECK_MODULES(LIBSYSTEMD, [libsystemd])
 PKG_CHECK_MODULES(LIBSYSTEM, [libsystem])
 
 # ------------------------------------------------------------------------------

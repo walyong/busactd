@@ -9,10 +9,24 @@ noinst_LTLIBRARIES =
 noinst_DATA =
 
 DEFAULT_CFLAGS = \
+	$(GLIB_CFLAGS) \
+	$(GIO_CFLAGS) \
+	$(LIBSYSTEMD_CFLAGS) \
+	$(LIBSYSTEM_CFLAGS) \
 	$(OUR_CFLAGS)
 
 DEFAULT_LDFLAGS = \
+	$(GLIB_LDFLAGS) \
+	$(GIO_LIBSLDFLAGS) \
+	$(LIBSYSTEMD_LDFLAGS) \
+	$(LIBSYSTEM_LDFLAGS) \
 	$(OUR_LDFLAGS)
+
+DEFAULT_LIBS = \
+	$(GLIB_LIBS) \
+	$(GIO_LIBS) \
+	$(LIBSYSTEMD_LIBS) \
+	$(LIBSYSTEM_LIBS)
 
 AM_CPPFLAGS = \
 	-include $(top_builddir)/config.h \
@@ -71,13 +85,6 @@ INSTALL_EXEC_HOOKS += \
 	systemd-install-target-wants-hook
 
 # ------------------------------------------------------------------------------
-noinst_LTLIBRARIES += \
-	libbusact-shared.la
-
-libbusact_shared_la_SOURCES = \
-	src/shared/log.c
-
-# ------------------------------------------------------------------------------
 # busactd
 busactd_SOURCES = \
 	src/busactd/dbus.c \
@@ -85,15 +92,10 @@ busactd_SOURCES = \
 	src/busactd/main.c
 
 busactd_CFLAGS = \
-	$(GLIB_CFLAGS) \
-	$(GIO_CFLAGS) \
-	$(LIBSYSTEM_CFLAGS)
+	$(AM_CFLAGS)
 
 busactd_LDADD = \
-	$(GLIB_LIBS) \
-	$(GIO_LIBS) \
-	$(LIBSYSTEM_LIBS) \
-	libbusact-shared.la
+	$(AM_LIBS)
 
 busactd_PROGRAMS += \
 	busactd
@@ -122,15 +124,10 @@ test_busactd_SOURCES = \
 	src/test/test-busactd.c
 
 test_busactd_CFLAGS = \
-	$(GLIB_CFLAGS) \
-	$(GIO_CFLAGS) \
-	$(LIBSYSTEM_CFLAGS)
+	$(AM_CFLAGS)
 
 test_busactd_LDADD = \
-	$(GLIB_LIBS) \
-	$(GIO_LIBS) \
-	$(LIBSYSTEM_LIBS) \
-	libbusact-shared.la
+	$(AM_LIBS)
 
 busactdtest_PROGRAMS += \
 	test-busactd
